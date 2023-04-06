@@ -2,12 +2,14 @@ var socket = io();
 
 $(() => {
   $("#sendButton").click(() => {
-    sendMessage({
-      name: $("#name").val(),
-      message: $("#message").val(),
-      date: Date.now(),
-    });
-    document.getElementById("message").value = "";
+    if ($("#name").val() != "" && $("#message").val() != ""){
+      sendMessage({
+        name: $("#name").val(),
+        message: $("#message").val(),
+        date: Date.now(),
+      });
+      document.getElementById("message").value = "";
+    }
   });
   getMessages();
 });
@@ -21,11 +23,13 @@ function addMessages(message) {
 }
 
 function getMessages() {
-  $.get("http://localhost:3000/chat", (data) => {
+  $.get("https://real-time-chat-js.onrender.com/chat", (data) => {
     data.forEach(addMessages);
   });
 }
 
 function sendMessage(message) {
-  $.post("http://localhost:3000/chat", message);
+  $.post("https://real-time-chat-js.onrender.com/chat", message);
 }
+
+//  https://real-time-chat-js.onrender.com/
