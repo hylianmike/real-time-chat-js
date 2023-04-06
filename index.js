@@ -36,7 +36,7 @@ io.on('connection', () => {
     console.log('A User is connected!');
 });
 
-mongoose.connect(process.env.db, (err) => {
+mongoose.connect(process.env.DB, (err) => {
   console.log("MongoDB Connected", err);
 });
 
