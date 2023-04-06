@@ -5,7 +5,7 @@ var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var mongoose = require('mongoose');
 
-// var configs = require('./config');
+var configs = require('./config');
 
 app.use(express.static(__dirname));
 app.use(bodyParser.json());
@@ -36,7 +36,7 @@ io.on('connection', () => {
     console.log('A User is connected!');
 });
 
-mongoose.connect(process.env.DB, (err) => {
+mongoose.connect(configs.db, (err) => {
   console.log("MongoDB Connected", err);
 });
 
