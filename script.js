@@ -1,4 +1,4 @@
-var socket = io();
+var socket = io('3.134.238.10');
 
 $(() => {
   $("#sendButton").click(() => {
@@ -23,13 +23,13 @@ function addMessages(message) {
 }
 
 function getMessages() {
-  $.get("https://real-time-chat-js.onrender.com/chat", (data) => {
+  $.get("http://localhost:3000/chat", (data) => {
     data.forEach(addMessages);
   });
 }
 
 function sendMessage(message) {
-  $.post("https://real-time-chat-js.onrender.com/chat", message);
+  $.post("http://localhost:3000/chat", message);
 }
 
 //  https://real-time-chat-js.onrender.com/
